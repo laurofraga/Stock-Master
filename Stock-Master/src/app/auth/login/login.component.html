@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          #emailInput="ngModel"
+          required
+          class="form-control"
+        />
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+          Email é obrigatório.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+          required
+          class="form-control"
+        />
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+          Senha é obrigatória.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
+        Login
+      </button>
+    </form>
+  </div>
+  
