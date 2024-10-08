@@ -16,13 +16,13 @@ export class LoginComponent {
 
   onLogin() {
     this.authService.login(this.email, this.password).subscribe({
-      next: (response) =>{
-
+      next: (response:any) =>{
+        console.log('Login efetuado com sucesso', response);
         //ajustar para a rota correta 
         this.router.navigate(['/dashboard']);
       },
-      error: (err) => {
-        console.log('Erro ao efetuar login', err);
+      error: (err:any) => {
+        console.log(err);
       }
     });
   }
