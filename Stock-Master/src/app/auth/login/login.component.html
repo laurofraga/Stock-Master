@@ -1,12 +1,37 @@
-<div>
-    <h2>Login</h2>
+<div class="container mt-5">
+    <h2 class="text-center">Login</h2>
     <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-      <label for="email">Email</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          [(ngModel)]="email"
+          name="email"
+          required
+        >
+        <div *ngIf="loginForm.submitted && !email" class="text-danger">
+          O email é obrigatório.
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Senha:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          [(ngModel)]="password"
+          name="password"
+          required
+        >
+        <div *ngIf="loginForm.submitted && !password" class="text-danger">
+          A senha é obrigatória.
+        </div>
+      </div>
   
-      <label for="password">Password</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
-  
-      <button type="submit">Login</button>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
   </div>
