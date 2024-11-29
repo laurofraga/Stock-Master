@@ -1,0 +1,79 @@
+<div class="container mt-4">
+    <div class="row">
+      <!-- Resumo -->
+      <div class="col-lg-12 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-md-4">
+                <h5>Produtos em Estoque</h5>
+                <p class="fs-4 text-primary">{{ totalProducts }}</p>
+              </div>
+              <div class="col-md-4">
+                <h5>Movimentações Recentes</h5>
+                <p class="fs-4 text-success">{{ recentMovements }}</p>
+              </div>
+              <div class="col-md-4">
+                <h5>Produtos com Baixa Quantidade</h5>
+                <p class="fs-4 text-danger">{{ lowStockProducts.length }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Produtos com Baixa Quantidade -->
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-warning text-white">
+            <h5>Produtos com Baixa Quantidade</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Quantidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of lowStockProducts">
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.quantity }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Últimas Movimentações -->
+      <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h5>Últimas Movimentações</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let movement of recentMovementsList">
+                <strong>{{ movement.product }}</strong>: {{ movement.action }} - {{ movement.date }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Gráfico -->
+      <div class="col-lg-12 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-secondary text-white">
+            <h5>Visão Geral de Estoque</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="stockChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
