@@ -13,13 +13,17 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CriarProdutoComponent } from './criar-produto/criar-produto.component';
+import { MovimentacoesComponent } from './movimentacoes/movimentacoes.component';
+import { MovimentacoesCriarComponent } from './movimentacoes-criar/movimentacoes-criar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    CriarProdutoComponent
+    CriarProdutoComponent,
+    MovimentacoesComponent,
+    MovimentacoesCriarComponent
   ],
   imports: [
     BrowserModule,

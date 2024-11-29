@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="card shadow-sm p-4">
+    <h2 class="text-center mb-4">Criar Movimentação</h2>
+
+    <form>
+      <div class="mb-4">
+        <label for="produto" class="form-label fw-bold">Produto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="produto"
+          placeholder="Digite o nome do produto"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="quantidade" class="form-label fw-bold">Quantidade</label>
+        <input
+          type="number"
+          class="form-control"
+          id="quantidade"
+          placeholder="Informe a quantidade"
+          min="1"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="tipo" class="form-label fw-bold">Tipo</label>
+        <select class="form-select" id="tipo">
+          <option value="" disabled selected>Selecione o tipo de movimentação</option>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+      

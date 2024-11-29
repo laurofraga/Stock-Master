@@ -1,0 +1,45 @@
+/* Títulos */
+h4 {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Tabelas */
+  .table {
+    border-radius: 3px;
+    overflow: hidden; /* Mantém bordas arredondadas */
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f5f9; /* Cor de hover */
+  }
+  
+  .table th {
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  
+  .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Sombra nas tabelas */
+  .shadow-sm {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Margens */
+  .container {
+    margin-top: 40px;
+  }
+  
+  .text-primary {
+    color: #007bff !important; /* Azul para entradas */
+  }
+  
+  .text-danger {
+    color: #dc3545 !important; /* Vermelho para saídas */
+  }
+  
