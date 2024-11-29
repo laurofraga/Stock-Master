@@ -15,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CriarProdutoComponent } from './criar-produto/criar-produto.component';
 import { MovimentacoesComponent } from './movimentacoes/movimentacoes.component';
 import { MovimentacoesCriarComponent } from './movimentacoes-criar/movimentacoes-criar.component';
+import { FornecedoresComponent } from './fornecedores/fornecedores.component';
+import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MovimentacoesCriarComponent } from './movimentacoes-criar/movimentacoes
     DashboardComponent,
     CriarProdutoComponent,
     MovimentacoesComponent,
-    MovimentacoesCriarComponent
+    MovimentacoesCriarComponent,
+    FornecedoresComponent,
+    AdicionarComponent
   ],
   imports: [
     BrowserModule,

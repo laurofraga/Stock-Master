@@ -1,0 +1,42 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .card {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  /* Adicionar um efeito de fundo sutil no hover */
+  .card:hover .card-body {
+    background-color: #f8f9fa;
+  }
+  
+  .card-title {
+    color: #007bff;
+  }
+  
+  .card:hover .card-title {
+    color: #0056b3;
+  }
+  

@@ -4,6 +4,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovimentacoesComponent } from './movimentacoes/movimentacoes.component';
 import { MovimentacoesCriarComponent } from './movimentacoes-criar/movimentacoes-criar.component';
+import { FornecedoresComponent } from './fornecedores/fornecedores.component';
+import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,7 +16,9 @@ const routes: Routes = [
   { path: 'movimentacoes', component: MovimentacoesComponent },
   { path: '', component: MovimentacoesComponent },
   { path: 'criar', component: MovimentacoesCriarComponent },
-  { path: 'movimentacao-criar', component: MovimentacoesCriarComponent }
+  { path: 'movimentacao-criar', component: MovimentacoesCriarComponent },
+  { path: 'fornecedores', component: FornecedoresComponent },
+  { path: 'fornecedores/adicionar', component: AdicionarComponent },
 
 
 ];

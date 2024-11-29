@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Fornecedores</h2>
+    <div class="d-flex justify-content-end mb-3">
+      <button
+        class="btn btn-primary"
+        routerLink="/fornecedores/adicionar"
+      >
+        Adicionar Fornecedor
+      </button>
+    </div>
+  
+    <div class="row">
+      <div *ngFor="let fornecedor of fornecedores" class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ fornecedor.nome }}</h5>
+            <p class="card-text">
+              <strong>Contato:</strong> {{ fornecedor.contato }}<br />
+              <strong>Endereço:</strong> {{ fornecedor.endereco }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
