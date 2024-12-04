@@ -14,13 +14,22 @@ interface Produto {
   styleUrl: './produtos.component.css'
 })
 export class ProdutosComponent {
-  produtos: Produto[] = [
-    { id: 1, nome: 'Produto A', quantidade: 10, preco: 50 },
-    { id: 2, nome: 'Produto B', quantidade: 20, preco: 30 },
-  ];
+  produtos: any[] = [];
+  produtosEstoqueBaixo: any[] = [];
 
-  adicionarProduto() {
-    alert('Formulário de adicionar produto será implementado!');
+  ngOnInit(): void{
+    this.produtos = [
+      { id: 1, nome: 'Produto A', quantidade: 2, preco: 10.0, minStock: 5 },
+      { id: 2, nome: 'Produto B', quantidade: 10, preco: 15.0, minStock: 8 },
+      { id: 3, nome: 'Produto C', quantidade: 1, preco: 20.0, minStock: 3 },
+    ];
+
+    this.verificarEstoqueBaixo();
   }
 
+  verificarEstoqueBaixo() {
+    this.produtosEstoqueBaixo = this.produtos.filter(
+      (produto) => produto.quantidade < produto.minStock
+    );
+  }
 }

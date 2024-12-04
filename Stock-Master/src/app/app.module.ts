@@ -17,6 +17,9 @@ import { MovimentacoesComponent } from './movimentacoes/movimentacoes.component'
 import { MovimentacoesCriarComponent } from './movimentacoes-criar/movimentacoes-criar.component';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component
     MovimentacoesComponent,
     MovimentacoesCriarComponent,
     FornecedoresComponent,
-    AdicionarComponent
+    AdicionarComponent,
+    FuncionariosComponent,
+    FuncionarioCriarComponent
   ],
   imports: [
     BrowserModule,

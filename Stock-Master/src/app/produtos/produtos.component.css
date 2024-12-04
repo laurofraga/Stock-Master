@@ -6,14 +6,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  .card {
+  .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
   
-  .card-body {
+  .product-card-body {
     text-align: center;
   }
   
@@ -41,3 +41,19 @@
     border-top-right-radius: 8px;
   }
   
+  .alert-card {
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    transition: box-shadow 0.3s;
+  }
+  .alert-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .text-danger {
+    font-weight: bold;
+    color: #dc3545;
+  }
+  .text-success {
+    font-weight: bold;
+    color: #28a745;
+  }
