@@ -17,6 +17,7 @@ import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar.component';
+import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 
 
 
@@ -33,6 +34,7 @@ import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar
     AdicionarComponent,
     FuncionariosComponent,
     FuncionarioCriarComponent,
+    EditarProdutoComponent,
    
   ],
   imports: [

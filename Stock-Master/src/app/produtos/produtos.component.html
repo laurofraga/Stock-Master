@@ -48,8 +48,8 @@
             <h5 class="card-title">{{ produto.nome }}</h5>
             <p class="card-text">Quantidade: {{ produto.quantidade }}</p>
             <p class="card-text">Preço: {{ produto.preco | currency: 'BRL':'symbol':'1.2-2' }}</p>
-            <button class="btn btn-warning">Editar</button>
-            <button class="btn btn-danger">Excluir</button>
+            <button class="btn btn-warning" [routerLink]="['/produtos/editar', produto.id]">Editar</button>
+            <button class="btn btn-danger" (click)="excluirProduto(produto.id)">Excluir</button>
           </div>
         </div>
       </div>

@@ -47,4 +47,11 @@ export class ProdutosComponent {
     }
   }
 
+  excluirProduto(id: number): void {
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      this.produtos = this.produtos.filter(produto => produto.id !== id);
+      this.verificarEstoqueBaixo();
+    }
+  }
+  
 }
