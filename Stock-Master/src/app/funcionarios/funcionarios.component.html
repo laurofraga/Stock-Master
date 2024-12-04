@@ -1,1 +1,12 @@
-<p>funcionarios works!</p>
+<div class="container mt-4">
+    <h3>Funcionários</h3>
+    <button class="btn btn-primary mb-3" routerLink="/funcionarios/adicionar">Adicionar Funcionário</button>
+  
+    <div class="card mb-3" *ngFor="let funcionario of funcionarios">
+      <div class="card-body">
+        <h5 class="card-title">{{ funcionario.nome }}</h5>
+        <p class="card-text">E-mail: {{ funcionario.email }}</p>
+      </div>
+    </div>
+  </div>
+  

@@ -16,14 +16,32 @@
   </ng-template>
 </div>
 
+
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2>Gerenciamento de Produtos</h2>
       <button class="btn btn-primary" [routerLink]="'/produtos/criar'">Adicionar Produto</button>
     </div>
-  
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let produto of produtos">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Buscar produto..." 
+            [(ngModel)]="searchText" 
+            (ngModelChange)="filterProdutos()">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="searchText && filteredProdutos.length === 0" class="alert alert-warning">
+      Nenhum produto encontrado.
+    </div>
+    
+    
+    <div class="row" *ngIf="filteredProdutos.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let produto of filteredProdutos">
         <div class="card product-card shadow-sm">
           <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{ produto.nome }}">
           <div class="card-body">
@@ -36,7 +54,8 @@
         </div>
       </div>
     </div>
-  </div>
+  
+   
 
  
   

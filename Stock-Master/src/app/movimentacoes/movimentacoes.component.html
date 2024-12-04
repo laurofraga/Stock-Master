@@ -1,53 +1,56 @@
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Movimentações</h2>
+  <h2 class="text-center mb-4">Movimentações</h2>
 
-    <div class="d-flex justify-content-end mb-4">
+  <div class="d-flex justify-content-end mb-4">
+</div>
+  <!-- Entradas -->
+  <div class="mb-5">
+    <h4 class="text-primary">Entradas</h4>
+    <table class="table table-hover table-bordered shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th>Funcionário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entrada of entradas">
+          <td>{{ entrada.produto }}</td>
+          <td>{{ entrada.quantidade }}</td>
+          <td>{{ entrada.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ entrada.funcionario }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-    <!-- Entradas -->
-    <div class="mb-5">
-      <h4 class="text-primary">Entradas</h4>
-      <table class="table table-hover table-bordered shadow-sm">
-        <thead class="table-light">
-          <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Data</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let entrada of entradas">
-            <td>{{ entrada.produto }}</td>
-            <td>{{ entrada.quantidade }}</td>
-            <td>{{ entrada.data | date: 'dd/MM/yyyy HH:mm' }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <!-- Saídas -->
-    <div>
-      <h4 class="text-danger">Saídas</h4>
-      <table class="table table-hover table-bordered shadow-sm">
-        <thead class="table-light">
-          <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Data</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let saida of saidas">
-            <td>{{ saida.produto }}</td>
-            <td>{{ saida.quantidade }}</td>
-            <td>{{ saida.data | date: 'dd/MM/yyyy HH:mm' }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <button
-      class="btn btn-primary"
-      (click)="irParaCriarMovimentacao()">
-      <i class="bi bi-plus-circle me-2"></i>Criar Movimentação
-    </button>
+
+  <!-- Saídas -->
+  <div>
+    <h4 class="text-danger">Saídas</h4>
+    <table class="table table-hover table-bordered shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th>Funcionário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let saida of saidas">
+          <td>{{ saida.produto }}</td>
+          <td>{{ saida.quantidade }}</td>
+          <td>{{ saida.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ saida.funcionario }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+  <button
+    class="btn btn-primary"
+    (click)="irParaCriarMovimentacao()">
+    <i class="bi bi-plus-circle me-2"></i>Criar Movimentação
+  </button>
+</div>

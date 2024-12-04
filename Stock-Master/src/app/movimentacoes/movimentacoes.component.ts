@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class MovimentacoesComponent {
   entradas = [
-    { produto: 'Produto A', quantidade: 10, data: new Date() },
-    { produto: 'Produto C', quantidade: 20, data: new Date() }
+    { produto: 'Produto A', quantidade: 10, data: new Date(), funcionario: 'João Silva' },
+    { produto: 'Produto C', quantidade: 20, data: new Date(), funcionario: 'Maria Oliveira' }
   ];
 
   saidas = [
-    { produto: 'Produto B', quantidade: 5, data: new Date() },
-    { produto: 'Produto D', quantidade: 2, data: new Date() }
+    { produto: 'Produto B', quantidade: 5, data: new Date(), funcionario: 'Maria Oliveira' },
+    { produto: 'Produto D', quantidade: 2, data: new Date(), funcionario: 'Maria Oliveira' }
   ];
 
   constructor(private router: Router) {}

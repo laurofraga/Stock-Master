@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './movimentacoes-criar.component.css'
 })
 export class MovimentacoesCriarComponent {
-
+  novaMovimentacao = {
+    produto: '',
+    tipo: '',
+    quantidade: null,
+    funcionario: '',
+  };
+  funcionarios = ['João Silva', 'Maria Oliveira', 'Ana Santos'];
 }

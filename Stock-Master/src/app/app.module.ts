@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -21,6 +19,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar
     FornecedoresComponent,
     AdicionarComponent,
     FuncionariosComponent,
-    FuncionarioCriarComponent
+    FuncionarioCriarComponent,
+   
   ],
   imports: [
     BrowserModule,

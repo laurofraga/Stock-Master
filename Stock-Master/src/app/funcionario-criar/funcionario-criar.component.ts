@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './funcionario-criar.component.css'
 })
 export class FuncionarioCriarComponent {
+  novoFuncionario = {
+    nome: '',
+    email: '',
+    senha: '',
+    confirmarSenha: ''
+  };
 
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  salvarFuncionario(): void {
+    console.log(this.novoFuncionario);
+  }
 }

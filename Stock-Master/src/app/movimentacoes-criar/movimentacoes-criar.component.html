@@ -30,4 +30,26 @@
           <option value="" disabled selected>Selecione o tipo de movimentação</option>
           <option value="entrada">Entrada</option>
           <option value="saida">Saída</option>
+        
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <label for="funcionario">Funcionário Responsável</label>
+        <select
+          id="funcionario"
+          class="form-control"
+          [(ngModel)]="novaMovimentacao.funcionario"
+          name="funcionario"
+          required
+        >
+          <option value="" disabled selected>Selecione um funcionário</option>
+          <option *ngFor="let funcionario of funcionarios" [value]="funcionario">
+            {{ funcionario }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>      
+      
+
+      
       
