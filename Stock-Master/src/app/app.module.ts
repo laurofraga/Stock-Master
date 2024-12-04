@@ -18,6 +18,9 @@ import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar.component';
 import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+
 
 
 
@@ -47,7 +50,7 @@ import { EditarProdutoComponent } from './editar-produto/editar-produto.componen
     MatPaginatorModule,
     MatSortModule,
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
