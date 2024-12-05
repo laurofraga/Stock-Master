@@ -1,35 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-
-
-interface Produto {
-  id: number;
-  nome: string;
-  quantidade: number;
-  preco: number;
-  minStock: number;
-}
+import { HttpClient } from '@angular/common/http';
+import { Produto } from '../models/produto.model';
 
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
-  styleUrl: './produtos.component.css'
+  styleUrls: ['./produtos.component.css']
 })
-export class ProdutosComponent {
+export class ProdutosComponent implements OnInit {
   searchText: string = '';
   produtos: Produto[] = [];
   produtosEstoqueBaixo: Produto[] = [];
   filteredProdutos: Produto[] = [];
+  fornecedores: { id: number; nome: string }[] = [];
 
-  ngOnInit(): void{
-    this.produtos = [
-      { id: 1, nome: 'Produto A', quantidade: 20, preco: 10.0, minStock: 5 },
-      { id: 2, nome: 'Produto B', quantidade: 10, preco: 15.0, minStock: 8 },
-      { id: 3, nome: 'Produto C', quantidade: 13, preco: 20.0, minStock: 3 },
-    ];
 
-    this.verificarEstoqueBaixo();
-    this.filteredProdutos = this.produtos;
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.getProdutos();
+    
   }
+
+  getProdutos(): void {
+    this.http.get<Produto[]>('http://localhost:3000/produtos').subscribe(
+      (produtos) => {
+        this.produtos = produtos;  // Armazena todos os produtos
+        this.filteredProdutos = produtos;  // Inicializa a lista de produtos filtrados com todos os produtos
+        this.verificarEstoqueBaixo();
+      },
+      (error) => {
+        console.error('Erro ao carregar produtos:', error);
+      }
+    );
+  }
+
 
   verificarEstoqueBaixo() {
     this.produtosEstoqueBaixo = this.produtos.filter(
@@ -39,7 +44,7 @@ export class ProdutosComponent {
 
   filterProdutos() {
     if (this.searchText.trim() === '') {
-      this.filteredProdutos = this.produtos;
+      this.filteredProdutos = this.produtos;  // Se o campo de pesquisa estiver vazio, mostra todos os produtos
     } else {
       this.filteredProdutos = this.produtos.filter(produto =>
         produto.nome.toLowerCase().includes(this.searchText.toLowerCase())
@@ -47,11 +52,22 @@ export class ProdutosComponent {
     }
   }
 
-  excluirProduto(id: number): void {
-    if (confirm('Tem certeza que deseja excluir este produto?')) {
-      this.produtos = this.produtos.filter(produto => produto.id !== id);
-      this.verificarEstoqueBaixo();
+  excluirProduto(produtoId: number | undefined): void {
+    if (produtoId) {
+      // Solicitação HTTP DELETE para excluir o produto
+      this.http.delete(`http://localhost:3000/produtos/${produtoId}`).subscribe(
+        () => {
+          // Atualiza a lista de produtos após exclusão
+          this.produtos = this.produtos.filter(produto => produto.id !== produtoId);
+          this.filteredProdutos = this.filteredProdutos.filter(produto => produto.id !== produtoId);
+          console.log(`Produto com ID ${produtoId} foi excluído.`);
+        },
+        (error) => {
+          console.error('Erro ao excluir o produto:', error);
+        }
+      );
+    } else {
+      console.error('ID do produto não encontrado.');
     }
   }
-  
 }

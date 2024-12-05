@@ -1,21 +1,82 @@
 <div class="container mt-4">
     <h2>Adicionar Novo Produto</h2>
-    <form>
+    <form (ngSubmit)="criarProduto()">
       <div class="mb-3">
         <label for="nome" class="form-label">Nome do Produto</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome do produto" required>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          placeholder="Nome do produto"
+          [(ngModel)]="produto.nome"
+          name="nome"
+          required
+        />
       </div>
   
+      <!-- Quantidade -->
       <div class="mb-3">
         <label for="quantidade" class="form-label">Quantidade</label>
-        <input type="number" class="form-control" id="quantidade" placeholder="Quantidade em estoque" min="0" required>
+        <input
+          type="number"
+          class="form-control"
+          id="quantidade"
+          placeholder="Quantidade em estoque"
+          [(ngModel)]="produto.quantidade"
+          name="quantidade"
+          min="0"
+          required
+        />
       </div>
   
+      <!-- Preço -->
       <div class="mb-3">
         <label for="preco" class="form-label">Preço</label>
-        <input type="number" class="form-control" id="preco" placeholder="Preço do produto" min="0" step="0.01" required>
+        <input
+          type="number"
+          class="form-control"
+          id="preco"
+          placeholder="Preço do produto"
+          [(ngModel)]="produto.preco"
+          name="preco"
+          min="0"
+          step="0.01"
+          required
+        />
       </div>
   
+      <!-- Estoque Mínimo -->
+      <div class="mb-3">
+        <label for="minStock" class="form-label">Estoque Mínimo</label>
+        <input
+          type="number"
+          id="minStock"
+          class="form-control"
+          [(ngModel)]="produto.minStock"
+          name="minStock"
+          required
+          min="0"
+        />
+      </div>
+  
+      <!-- Fornecedor -->
+      <div class="mb-3">
+        <label for="fornecedor" class="form-label">Fornecedor</label>
+        <select
+          id="fornecedor"
+          class="form-control"
+          [(ngModel)]="produto.fornecedorId"
+          name="fornecedorId"
+          required
+        >
+          <option value="" disabled selected>Selecione o fornecedor</option>
+          <option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id">
+            {{ fornecedor.nome }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Botões -->
       <div class="d-flex justify-content-between">
         <button type="submit" class="btn btn-success">Salvar Produto</button>
         <a [routerLink]="'/produtos'" class="btn btn-secondary">Cancelar</a>

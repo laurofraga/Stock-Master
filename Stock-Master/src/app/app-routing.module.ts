@@ -8,7 +8,8 @@ import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { AdicionarComponent } from './fornecedores/adicionar/adicionar.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar.component';
-import { AuthGuard } from './auth/auth.guard';  // Importando o AuthGuard
+import { AuthGuard } from './auth/auth.guard';
+import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: 'produtos',
     loadChildren: () => import('./produtos/produtos.module').then(m => m.ProdutosModule),
     canActivate: [AuthGuard]  // Protegendo a rota de Produtos
+  },
+  {
+    path: 'produtos/editar/:id',
+    component: EditarProdutoComponent,
+    canActivate: [AuthGuard]  
   },
   {
     path: 'movimentacoes',

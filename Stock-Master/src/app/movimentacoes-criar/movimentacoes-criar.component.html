@@ -1,42 +1,47 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4">Criar Movimentação</h2>
 
-  <form (ngSubmit)="salvarMovimentacao()">
+  <form (ngSubmit)="criarMovimentacao()">
     <div class="form-group">
       <label for="tipo">Tipo</label>
-      <select [(ngModel)]="novaMovimentacao.tipo" name="tipo" class="form-control">
+      <select class="form-control" id="tipo" [(ngModel)]="movimentacao.tipo" name="tipo" required>
         <option value="entrada">Entrada</option>
         <option value="saida">Saída</option>
       </select>
     </div>
     <div class="form-group">
+      <label for="quantidade">Quantidade</label>
+      <input type="number" class="form-control" id="quantidade" [(ngModel)]="movimentacao.quantidade" name="quantidade" required>
+    </div>
+    <div class="form-group">
       <label for="produtoId">Produto</label>
-      <select [(ngModel)]="novaMovimentacao.produtoId" name="produtoId" class="form-control">
+      <select class="form-control" id="produtoId" [(ngModel)]="movimentacao.produtoId" name="produtoId" required>
         <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="quantidade">Quantidade</label>
-      <input type="number" [(ngModel)]="novaMovimentacao.quantidade" name="quantidade" class="form-control">
-    </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="movimentacao.tipo === 'entrada'">
       <label for="fornecedorId">Fornecedor</label>
-      <select [(ngModel)]="novaMovimentacao.fornecedorId" name="fornecedorId" class="form-control">
+      <select class="form-control" id="fornecedorId" [(ngModel)]="movimentacao.fornecedorId" name="fornecedorId">
         <option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id">{{ fornecedor.nome }}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="funcionarioId">Funcionário</label>
-      <select [(ngModel)]="novaMovimentacao.funcionarioId" name="funcionarioId" class="form-control">
+      <select class="form-control" id="funcionarioId" [(ngModel)]="movimentacao.funcionarioId" name="funcionarioId" required>
         <option *ngFor="let funcionario of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
-  </form>
-  
-      <button type="button" class="btn btn-secondary" routerLink="/movimentacoes">
-        Cancelar
-      </button>
+    <div class="form-group">
+      <label for="data">Data</label>
+      <input type="date" class="form-control" id="data" [(ngModel)]="movimentacao.data" [value]="movimentacao.data | date:'yyyy-MM-dd'" name="data" required>
     </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Criar Movimentação</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
   
 

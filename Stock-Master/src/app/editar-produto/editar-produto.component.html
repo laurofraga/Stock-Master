@@ -1,30 +1,72 @@
 <div class="container mt-4">
-    <h3>Editar Produto</h3>
-  
-    <div *ngIf="produto">
-      <form (ngSubmit)="salvar()">
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" id="nome" class="form-control" [(ngModel)]="produto.nome" name="nome">
-        </div>
-        
-        <div class="mb-3">
-          <label for="quantidade" class="form-label">Quantidade</label>
-          <input type="number" id="quantidade" class="form-control" [(ngModel)]="produto.quantidade" name="quantidade">
-        </div>
-        
-        <div class="mb-3">
-          <label for="preco" class="form-label">Preço</label>
-          <input type="number" id="preco" class="form-control" [(ngModel)]="produto.preco" name="preco">
-        </div>
-        
-        <div class="mb-3">
-          <label for="minStock" class="form-label">Estoque Mínimo</label>
-          <input type="number" id="minStock" class="form-control" [(ngModel)]="produto.minStock" name="minStock">
-        </div>
-  
-        <button type="submit" class="btn btn-primary">Salvar</button>
-      </form>
+  <h3>Editar Produto</h3>
+  <form (ngSubmit)="salvarProduto()">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome do Produto</label>
+      <input
+        type="text"
+        id="nome"
+        [(ngModel)]="produto.nome"
+        name="nome"
+        class="form-control"
+        required
+      />
     </div>
-  </div>
-  
+
+    <div class="mb-3">
+      <label for="quantidade" class="form-label">Quantidade</label>
+      <input
+        type="number"
+        id="quantidade"
+        [(ngModel)]="produto.quantidade"
+        name="quantidade"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="preco" class="form-label">Preço</label>
+      <input
+        type="number"
+        id="preco"
+        [(ngModel)]="produto.preco"
+        name="preco"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="minStock" class="form-label">Estoque Mínimo</label>
+      <input
+        type="number"
+        id="minStock"
+        [(ngModel)]="produto.minStock"
+        name="minStock"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="fornecedor" class="form-label">Fornecedor</label>
+      <select
+        id="fornecedor"
+        [(ngModel)]="produto.fornecedorId"
+        name="fornecedorId"
+        class="form-control"
+        required
+      >
+        <option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id">
+          {{ fornecedor.nome }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/produtos']">
+      Cancelar
+    </button>
+  </form>
+</div>

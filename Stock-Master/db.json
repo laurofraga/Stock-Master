@@ -1,0 +1,88 @@
+{
+  "funcionarios": [
+    {
+      "id": 1,
+      "nome": "Lauro Fraga Dias",
+      "username": "admin2",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "nome": "Joao",
+      "email": "joao@email.com",
+      "username": "joao",
+      "password": "joao1"
+    },
+    {
+      "id": 3,
+      "nome": "Felipe",
+      "email": "lipe@email.com",
+      "username": "Felipe",
+      "password": "12345"
+    },
+    {
+      "id": "9485",
+      "nome": "Dani",
+      "email": "Dani@email.com",
+      "username": "Dani",
+      "password": "12345"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "ee52",
+      "nome": "água mineral",
+      "quantidade": 30,
+      "preco": 3,
+      "minStock": 40,
+      "fornecedorId": "2"
+    },
+    {
+      "id": "0013",
+      "nome": "Sabão em Pó",
+      "quantidade": 35,
+      "preco": 1,
+      "minStock": 20,
+      "fornecedorId": "0"
+    }
+  ],
+  "movimentacoes": [
+    {
+      "id": "600c",
+      "tipo": "saida",
+      "quantidade": 20,
+      "produtoId": "ee52",
+      "data": "2024-12-04",
+      "funcionarioId": "1"
+    },
+    {
+      "id": "6d5e",
+      "tipo": "entrada",
+      "quantidade": 30,
+      "produtoId": "ee52",
+      "data": "2024-12-10",
+      "fornecedorId": "2",
+      "funcionarioId": "1"
+    }
+  ],
+  "fornecedores": [
+    {
+      "id": 1,
+      "nome": "Supplier 1",
+      "endereco": "Rua 1",
+      "contato": "supplier1@example.com"
+    },
+    {
+      "id": 2,
+      "nome": "Supplier 2",
+      "endereco": "Rua 2",
+      "contato": "supplier2@example.com"
+    },
+    {
+      "id": 0,
+      "nome": "fornecedor 3",
+      "endereco": "rua 3",
+      "contato": "fornecedor@email.com"
+    }
+  ]
+}

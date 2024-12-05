@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let entrada of movimentacoesEntradas">
-          <td>{{ entrada.produtoId }}</td>
+          <td>{{ obterNomeProduto(entrada.produtoId) }}</td>
           <td>{{ entrada.quantidade }}</td>
           <td>{{ entrada.data | date: 'dd/MM/yyyy HH:mm' }}</td>
           <td>{{ obterNomeResponsavel(entrada) }}</td>
@@ -38,7 +38,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let saida of movimentacoesSaidas">
-          <td>{{ saida.produtoId }}</td>
+          <td>{{ obterNomeProduto(saida.produtoId) }}</td>
           <td>{{ saida.quantidade }}</td>
           <td>{{ saida.data | date: 'dd/MM/yyyy HH:mm' }}</td>
           <td>{{ obterNomeResponsavel(saida)  }}</td>

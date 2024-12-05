@@ -1,19 +1,30 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Fornecedor } from '../models/fornecedor.model';
 
 @Component({
   selector: 'app-fornecedores',
   templateUrl: './fornecedores.component.html',
   styleUrl: './fornecedores.component.css'
 })
+
 export class FornecedoresComponent {
-  fornecedores = [
-    { nome: 'Fornecedor A', contato: '1234-5678', endereco: 'Rua A, 123' },
-    { nome: 'Fornecedor B', contato: '9876-5432', endereco: 'Rua B, 456' },
-    { nome: 'Fornecedor C', contato: '1111-2222', endereco: 'Rua C, 789' },
-  ];
+  fornecedores: Fornecedor[] = [];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getFornecedores();
+  }
+  getFornecedores(): void {
+    this.http.get<Fornecedor[]>('http://localhost:3000/fornecedores').subscribe(
+      (data) => {
+        this.fornecedores = data; 
+      },
+      (error) => {
+        console.error('Erro ao carregar fornecedores', error);
+      }
+    );
+  }
 
 }

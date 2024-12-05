@@ -1,7 +1,8 @@
 <div class="container mt-4">
-    <h3>Funcionários</h3>
-    <button class="btn btn-primary mb-3" routerLink="/funcionarios/adicionar">Adicionar Funcionário</button>
-  
+  <h3>Funcionários</h3>
+  <button class="btn btn-primary mb-3" routerLink="/funcionarios/adicionar">Adicionar Funcionário</button>
+
+  <div *ngIf="funcionarios.length > 0; else noFuncionarios">
     <div class="card mb-3" *ngFor="let funcionario of funcionarios">
       <div class="card-body">
         <h5 class="card-title">{{ funcionario.nome }}</h5>
@@ -10,3 +11,7 @@
     </div>
   </div>
   
+  <ng-template #noFuncionarios>
+    <p>Não há funcionários cadastrados.</p>
+  </ng-template>
+</div>

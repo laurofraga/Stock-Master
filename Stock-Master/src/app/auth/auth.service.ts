@@ -1,42 +1,51 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Observable, throwError} from 'rxjs';
 import { User } from '../models/user.model';
+import { map, catchError } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl; // URL da API para autenticação
-  private authTokenKey = 'auth_token';
+  private apiUrl = 'http://localhost:3000'; // URL da API para autenticação
+  private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {}
 
   // Função para login
   login(user: User): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, user);
-  }
+    // Faz uma requisição para buscar o usuário correspondente
+    return this.http.get<any[]>(`${this.apiUrl}/users`).pipe(
+      map(users => {
+        const matchedUser = users.find(
+          u => u.username === user.username && u.password === user.password
+        );
 
-  // Armazenar o token no LocalStorage
-  storeToken(token: string): void {
-    localStorage.setItem(this.authTokenKey, token);
+        if (matchedUser) {
+          // Retorna um token fictício
+          return { token: 'fake-jwt-token' };
+        } else {
+          throw new Error('Credenciais inválidas');
+        }
+      }),
+      catchError(err => throwError(() => 'Erro ao autenticar'))
+    );
   }
-
   // Recuperar o token do LocalStorage
+  storeToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
   getToken(): string | null {
-    return localStorage.getItem(this.authTokenKey);
+    return localStorage.getItem(this.tokenKey);
   }
-
-  // Verificar se o usuário está autenticado
+  
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    return token !== null;
+    return !!this.getToken(); // Retorna true se o token existir
   }
-
-  // Logout - remover o token
   logout(): void {
-    localStorage.removeItem(this.authTokenKey);
+    localStorage.removeItem(this.tokenKey);
   }
 }

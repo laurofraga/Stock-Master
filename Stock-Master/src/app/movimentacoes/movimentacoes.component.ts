@@ -1,43 +1,80 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Movimentacao } from '../models/movimentacao.model';
+import { Funcionario } from '../models/funcionario.model';
+import { Fornecedor } from '../models/fornecedor.model';
+import { Produto } from '../models/produto.model';  // Importando o modelo de produto
 
 @Component({
   selector: 'app-movimentacoes',
   templateUrl: './movimentacoes.component.html',
   styleUrls: ['./movimentacoes.component.css']
 })
-export class MovimentacoesComponent {
- movimentacoes: Movimentacao[] = [];
- movimentacoesEntradas: Movimentacao[] = [];
- movimentacoesSaidas: Movimentacao[] = [];
- fornecedores: { id: number; nome: string }[] = [];
- funcionarios: { id: number; nome: string }[] = [];
- 
+export class MovimentacoesComponent implements OnInit {
+  movimentacoes: Movimentacao[] = [];
+  movimentacoesEntradas: Movimentacao[] = [];
+  movimentacoesSaidas: Movimentacao[] = [];
+  fornecedores: Fornecedor[] = [];
+  funcionarios: Funcionario[] = [];
+  produtos: Produto[] = [];  // Variável para armazenar os produtos
 
- ngOnInit(): void{
-  this.carregarMovimentacoes();
- }
-  carregarMovimentacoes() {
-    this.fornecedores = [
-      { id: 1, nome: 'Fornecedor A' },
-      { id: 2, nome: 'Fornecedor B' },
-    ];
+  constructor(private http: HttpClient, private router: Router) {}
 
-    this.funcionarios = [
-      { id: 1, nome: 'Funcionário X' },
-      { id: 3, nome: 'Funcionário Y' },
-    ];
-    this.movimentacoes = [
-      { id: 1, tipo: 'entrada', quantidade: 10, produtoId: 1, fornecedorId: 2, data: new Date() },
-      { id: 2, tipo: 'saida', quantidade: 5, produtoId: 2, funcionarioId: 3, data: new Date() },
-    ];
-    this.movimentacoesEntradas = this.movimentacoes.filter((m) => m.tipo === 'entrada');
-    this.movimentacoesSaidas = this.movimentacoes.filter((m) => m.tipo === 'saida');
-
-    
+  ngOnInit(): void {
+    this.carregarMovimentacoes();
   }
 
+  // Carregar movimentações, fornecedores, funcionários e produtos
+  carregarMovimentacoes() {
+    // Carregar fornecedores e funcionários
+    this.http.get<Fornecedor[]>('http://localhost:3000/fornecedores').subscribe(
+      (data) => {
+        this.fornecedores = data;
+      },
+      (error) => {
+        console.error('Erro ao carregar fornecedores', error);
+      }
+    );
+
+    this.http.get<Funcionario[]>('http://localhost:3000/funcionarios').subscribe(
+      (data) => {
+        this.funcionarios = data;
+      },
+      (error) => {
+        console.error('Erro ao carregar funcionários', error);
+      }
+    );
+
+    this.http.get<Produto[]>('http://localhost:3000/produtos').subscribe(
+      (data) => {
+        this.produtos = data;  // Armazena os produtos carregados
+      },
+      (error) => {
+        console.error('Erro ao carregar produtos', error);
+      }
+    );
+
+    // Carregar movimentações
+    this.http.get<Movimentacao[]>('http://localhost:3000/movimentacoes').subscribe(
+      (data) => {
+        this.movimentacoes = data;
+        this.movimentacoesEntradas = this.movimentacoes.filter((m) => m.tipo === 'entrada');
+        this.movimentacoesSaidas = this.movimentacoes.filter((m) => m.tipo === 'saida');
+      },
+      (error) => {
+        console.error('Erro ao carregar movimentações', error);
+      }
+    );
+  }
+
+  // Função para obter o nome do produto com base no produtoId
+  obterNomeProduto(produtoId: number): string {
+    const produto = this.produtos.find((p) => Number(p.id) === produtoId);
+    return produto ? produto.nome : 'Produto não encontrado';
+  }
+
+  // Função para obter nome do responsável (funcionário ou fornecedor)
   obterNomeResponsavel(movimentacao: Movimentacao): string {
     if (movimentacao.fornecedorId) {
       const fornecedor = this.fornecedores.find((f) => f.id === movimentacao.fornecedorId);
@@ -52,8 +89,7 @@ export class MovimentacoesComponent {
     return 'Responsável não especificado';
   }
 
-  constructor(private router: Router) {}
-
+  // Redireciona para a tela de criação de movimentação
   irParaCriarMovimentacao() {
     this.router.navigate(['/movimentacao-criar']);
   }

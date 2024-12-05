@@ -20,6 +20,7 @@ import { FuncionarioCriarComponent } from './funcionario-criar/funcionario-criar
 import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { FormatDatePipe } from './pipes/format-date.pipe';
 
 
 
@@ -38,6 +39,7 @@ import { AuthGuard } from './auth/auth.guard';
     FuncionariosComponent,
     FuncionarioCriarComponent,
     EditarProdutoComponent,
+    FormatDatePipe,
    
   ],
   imports: [

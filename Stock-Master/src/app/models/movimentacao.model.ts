@@ -1,5 +1,5 @@
 export interface Movimentacao {
-    id: number; // Identificador único da movimentação
+    id?: number; // Identificador único da movimentação
     tipo: 'entrada' | 'saida'; // Tipo de movimentação
     quantidade: number; // Quantidade movimentada
     produtoId: number; // ID do produto relacionado
