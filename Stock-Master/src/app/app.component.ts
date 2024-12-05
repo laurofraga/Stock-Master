@@ -15,7 +15,7 @@ export class AppComponent {
     return this.authService.isAuthenticated();
   }
 
-  // Realiza o logout
+  
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);

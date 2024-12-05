@@ -44,7 +44,7 @@ export class ProdutosComponent implements OnInit {
 
   filterProdutos() {
     if (this.searchText.trim() === '') {
-      this.filteredProdutos = this.produtos;  // Se o campo de pesquisa estiver vazio, mostra todos os produtos
+      this.filteredProdutos = this.produtos;  
     } else {
       this.filteredProdutos = this.produtos.filter(produto =>
         produto.nome.toLowerCase().includes(this.searchText.toLowerCase())
@@ -54,10 +54,10 @@ export class ProdutosComponent implements OnInit {
 
   excluirProduto(produtoId: number | undefined): void {
     if (produtoId) {
-      // Solicitação HTTP DELETE para excluir o produto
+      
       this.http.delete(`http://localhost:3000/produtos/${produtoId}`).subscribe(
         () => {
-          // Atualiza a lista de produtos após exclusão
+
           this.produtos = this.produtos.filter(produto => produto.id !== produtoId);
           this.filteredProdutos = this.filteredProdutos.filter(produto => produto.id !== produtoId);
           console.log(`Produto com ID ${produtoId} foi excluído.`);

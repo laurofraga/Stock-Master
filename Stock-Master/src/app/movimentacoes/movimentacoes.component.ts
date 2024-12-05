@@ -25,9 +25,9 @@ export class MovimentacoesComponent implements OnInit {
     this.carregarMovimentacoes();
   }
 
-  // Carregar movimentações, fornecedores, funcionários e produtos
+  
   carregarMovimentacoes() {
-    // Carregar fornecedores e funcionários
+    
     this.http.get<Fornecedor[]>('http://localhost:3000/fornecedores').subscribe(
       (data) => {
         this.fornecedores = data;
@@ -49,19 +49,19 @@ export class MovimentacoesComponent implements OnInit {
     this.http.get<Produto[]>('http://localhost:3000/produtos').subscribe(
       (data) => {
         console.log('Produtos carregados:', data);  
-        this.produtos = data;  // Armazena os produtos carregados
+        this.produtos = data;  
       },
       (error) => {
         console.error('Erro ao carregar produtos', error);
       }
     );
 
-    // Carregar movimentações
+    
     this.http.get<Movimentacao[]>('http://localhost:3000/movimentacoes').subscribe(
       (data) => {
         this.movimentacoes = data;
-        this.movimentacoesEntradas = this.movimentacoes.filter((m) => m.tipo === 'entrada');
-        this.movimentacoesSaidas = this.movimentacoes.filter((m) => m.tipo === 'saida');
+        this.movimentacoesEntradas = this.movimentacoes.filter((m) => m.tipo == 'entrada');
+        this.movimentacoesSaidas = this.movimentacoes.filter((m) => m.tipo == 'saida');
       },
       (error) => {
         console.error('Erro ao carregar movimentações', error);
@@ -71,7 +71,7 @@ export class MovimentacoesComponent implements OnInit {
 
   // Função para obter o nome do produto com base no produtoId
   obterNomeProduto(produtoId: number) {
-    const produto = this.produtos.find((p) => Number(p.id) === produtoId);
+    const produto = this.produtos.find((p) => (p.id) == produtoId);
     return produto ? produto.nome : 'Produto não encontrado';
   }
 

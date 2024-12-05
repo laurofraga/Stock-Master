@@ -18,13 +18,13 @@ export class LoginComponent {
   onLogin(): void {
     this.authService.login(this.user).subscribe(
       (response) => {
-        // Se o login for bem-sucedido, armazene o token
+        //  armazena o token se for bem sucedido
         this.authService.storeToken(response.token);
-        // Redirecione o usuário para a dashboard ou outra rota protegida
+        // Redirecione o usuário para a dashboard 
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        // Se o login falhar, exiba uma mensagem de erro
+        
         this.errorMessage = 'Erro ao fazer login. Verifique suas credenciais.';
       }
     );

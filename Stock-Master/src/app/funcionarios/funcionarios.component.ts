@@ -19,7 +19,7 @@ export class FuncionariosComponent implements OnInit {
         this.funcionarios = data;  // Armazena os dados retornados pela API
       },
       (error) => {
-        console.error('Erro ao carregar funcionários', error);  // Caso haja erro, mostra no console
+        console.error('Erro ao carregar funcionários', error);  
       }
     );
   }

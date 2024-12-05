@@ -10,7 +10,7 @@ import { Fornecedor } from '../../models/fornecedor.model';
 })
 export class AdicionarComponent {
   fornecedor: Fornecedor = {
-    id: 0,
+    
     nome: '',
     endereco: '',
     contato: ''

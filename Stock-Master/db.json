@@ -32,7 +32,7 @@
     {
       "id": "ee52",
       "nome": "água mineral",
-      "quantidade": 30,
+      "quantidade": 45,
       "preco": 3,
       "minStock": 40,
       "fornecedorId": "2"
@@ -40,10 +40,18 @@
     {
       "id": "0013",
       "nome": "Sabão em Pó",
-      "quantidade": 65,
+      "quantidade": 15,
       "preco": 1,
       "minStock": 20,
       "fornecedorId": "0"
+    },
+    {
+      "id": "ee36",
+      "nome": "Coca COLA",
+      "quantidade": 35,
+      "preco": 5,
+      "minStock": 60,
+      "fornecedorId": "bd8b"
     }
   ],
   "movimentacoes": [
@@ -56,15 +64,6 @@
       "funcionarioId": "1"
     },
     {
-      "id": "6d5e",
-      "tipo": "entrada",
-      "quantidade": 30,
-      "produtoId": "ee52",
-      "data": "2024-12-10",
-      "fornecedorId": "2",
-      "funcionarioId": "1"
-    },
-    {
       "id": "8411",
       "tipo": "entrada",
       "quantidade": 30,
@@ -72,6 +71,57 @@
       "data": "2024-12-04",
       "fornecedorId": "2",
       "funcionarioId": "1"
+    },
+    {
+      "id": "667e",
+      "tipo": "entrada",
+      "quantidade": 5,
+      "produtoId": "0013",
+      "data": "2024-12-04",
+      "fornecedorId": "bd8b",
+      "funcionarioId": "3"
+    },
+    {
+      "id": "2ee4",
+      "tipo": "entrada",
+      "quantidade": 15,
+      "produtoId": "ee52",
+      "data": "2024-12-02",
+      "fornecedorId": "0",
+      "funcionarioId": "2"
+    },
+    {
+      "id": "d7bc",
+      "tipo": "saida",
+      "quantidade": 20,
+      "produtoId": "ee36",
+      "data": "2024-12-04",
+      "fornecedorId": "bd8b",
+      "funcionarioId": "2"
+    },
+    {
+      "id": "590c",
+      "tipo": "saida",
+      "quantidade": 10,
+      "produtoId": "ee36",
+      "data": "2024-12-04",
+      "funcionarioId": "2"
+    },
+    {
+      "id": "5799",
+      "tipo": "saida",
+      "quantidade": 30,
+      "produtoId": "0013",
+      "data": "2024-12-04",
+      "funcionarioId": "2"
+    },
+    {
+      "id": "2b7a",
+      "tipo": "saida",
+      "quantidade": 5,
+      "produtoId": "0013",
+      "data": "2024-12-04",
+      "funcionarioId": "9485"
     }
   ],
   "fornecedores": [
@@ -92,6 +142,12 @@
       "nome": "fornecedor 3",
       "endereco": "rua 3",
       "contato": "fornecedor@email.com"
+    },
+    {
+      "id": "bd8b",
+      "nome": "fornecedor 4",
+      "endereco": "rua 4 ",
+      "contato": "fornecedor4@email.com"
     }
   ]
 }

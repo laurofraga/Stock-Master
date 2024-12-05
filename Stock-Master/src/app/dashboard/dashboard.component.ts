@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     this.http.get<Produto[]>('http://localhost:3000/produtos').subscribe(
       (produtos) => {
         this.produtos = produtos;
-        console.log('Produtos:', this.produtos); // Adicionando log
+        console.log('Produtos:', this.produtos); 
         this.totalProdutos = produtos.length;
         this.produtosBaixaQuantidade = produtos.filter(
           (produto) => produto.quantidade < produto.minStock
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     this.http.get<Movimentacao[]>('http://localhost:3000/movimentacoes').subscribe(
       (movimentacoes) => {
         this.movimentacoes = movimentacoes;
-        console.log('Movimentações:', this.movimentacoes); // Adicionando log
+        console.log('Movimentações:', this.movimentacoes); 
         this.movimentacoesRecentes = movimentacoes.length;
         // Filtrando as 5 últimas movimentações
         this.movimentacoesRecentesLista = movimentacoes
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
           .slice(0, 5)
           .map((mov) => ({
             produto: this.obterNomeProduto(mov.produtoId),
-            acao: mov.tipo === 'entrada' ? 'Entrada' : 'Saída',
+            acao: mov.tipo == 'entrada' ? 'Entrada' : 'Saída',
             data: mov.data
           }));
       

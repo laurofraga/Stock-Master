@@ -1,32 +1,31 @@
-/* Centralizar o formulário */
+
 .container {
     max-width: 700px;
   }
   
-  /* Estilizar o card */
+ 
   .card {
     border-radius: 12px;
     background-color: #ffffff;
   }
   
-  /* Sombra suave */
+  
   .card.shadow-sm {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Título */
+
   h2 {
     font-weight: bold;
     color: #333;
   }
   
-  /* Labels */
+
   .form-label {
     color: #555;
     font-size: 0.9rem;
   }
   
-  /* Inputs */
+ 
   .form-control,
   .form-select {
     border-radius: 8px;
@@ -66,7 +65,7 @@
     border-color: #5a6268;
   }
   
-  /* Espaçamento entre elementos */
+  
   .mb-4 {
     margin-bottom: 1.5rem !important;
   }

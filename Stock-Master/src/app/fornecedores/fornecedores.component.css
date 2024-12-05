@@ -27,7 +27,7 @@
     padding: 1.25rem;
   }
   
-  /* Adicionar um efeito de fundo sutil no hover */
+
   .card:hover .card-body {
     background-color: #f8f9fa;
   }

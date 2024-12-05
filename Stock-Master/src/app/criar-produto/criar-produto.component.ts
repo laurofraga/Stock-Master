@@ -23,7 +23,7 @@ export class CriarProdutoComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit(): void {
-    this.getFornecedores();  // Carrega os fornecedores ao iniciar o componente
+    this.getFornecedores();  // Carrega  fornecedores
   }
 
   getFornecedores(): void {

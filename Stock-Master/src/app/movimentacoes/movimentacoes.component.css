@@ -4,14 +4,14 @@ h4 {
     font-weight: bold;
   }
   
-  /* Tabelas */
+  
   .table {
     border-radius: 3px;
-    overflow: hidden; /* Mantém bordas arredondadas */
+    overflow: hidden; 
   }
   
   .table-hover tbody tr:hover {
-    background-color: #f1f5f9; /* Cor de hover */
+    background-color: #f1f5f9; 
   }
   
   .table th {
@@ -25,21 +25,21 @@ h4 {
     vertical-align: middle;
   }
   
-  /* Sombra nas tabelas */
+
   .shadow-sm {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Margens */
+
   .container {
     margin-top: 40px;
   }
   
   .text-primary {
-    color: #007bff !important; /* Azul para entradas */
+    color: #007bff !important; 
   }
   
   .text-danger {
-    color: #dc3545 !important; /* Vermelho para saídas */
+    color: #dc3545 !important; 
   }
   
