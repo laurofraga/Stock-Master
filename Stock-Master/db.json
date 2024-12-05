@@ -40,7 +40,7 @@
     {
       "id": "0013",
       "nome": "Sabão em Pó",
-      "quantidade": 35,
+      "quantidade": 65,
       "preco": 1,
       "minStock": 20,
       "fornecedorId": "0"
@@ -61,6 +61,15 @@
       "quantidade": 30,
       "produtoId": "ee52",
       "data": "2024-12-10",
+      "fornecedorId": "2",
+      "funcionarioId": "1"
+    },
+    {
+      "id": "8411",
+      "tipo": "entrada",
+      "quantidade": 30,
+      "produtoId": "0013",
+      "data": "2024-12-04",
       "fornecedorId": "2",
       "funcionarioId": "1"
     }

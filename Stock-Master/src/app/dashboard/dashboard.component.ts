@@ -22,10 +22,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.carregarDados();
   }
-  ngAfterViewInit(): void {
-    // Criando o gráfico depois que a view for completamente inicializada
-    setTimeout(() => this.criarGrafico(), 100);  // Delay de 100ms para garantir que a view esteja pronta
-  }
+  
 
   carregarDados() {
     // Carregar produtos e movimentações
@@ -37,7 +34,7 @@ export class DashboardComponent implements OnInit {
         this.produtosBaixaQuantidade = produtos.filter(
           (produto) => produto.quantidade < produto.minStock
         );
-        this.criarGrafico();
+        
       },
       (error) => {
         console.error('Erro ao carregar produtos', error);
@@ -66,36 +63,9 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  criarGrafico() {
-    const ctx = document.getElementById('estoqueChart') as HTMLCanvasElement;
-    if (ctx) {
-      new Chart(ctx, {
-        type: 'bar',  // Tipo de gráfico
-        data: {
-          labels: this.produtos.map(produto => produto.nome),  // Usando o nome dos produtos como labels
-          datasets: [{
-            label: 'Quantidade de Produtos', 
-            data: this.produtos.map(produto => produto.quantidade), // Usando a quantidade dos produtos
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    }
-  }
-
 
   obterNomeProduto(produtoId: number): string {
-    const produto = this.produtos.find((p) => p.id === +produtoId);
+    const produto = this.produtos.find((p) => p.id == produtoId);
     return produto ? produto.nome : 'Produto não encontrado';
   }
 }

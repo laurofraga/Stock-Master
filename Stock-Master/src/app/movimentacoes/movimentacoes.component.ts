@@ -48,6 +48,7 @@ export class MovimentacoesComponent implements OnInit {
 
     this.http.get<Produto[]>('http://localhost:3000/produtos').subscribe(
       (data) => {
+        console.log('Produtos carregados:', data);  
         this.produtos = data;  // Armazena os produtos carregados
       },
       (error) => {
@@ -69,20 +70,20 @@ export class MovimentacoesComponent implements OnInit {
   }
 
   // Função para obter o nome do produto com base no produtoId
-  obterNomeProduto(produtoId: number): string {
+  obterNomeProduto(produtoId: number) {
     const produto = this.produtos.find((p) => Number(p.id) === produtoId);
     return produto ? produto.nome : 'Produto não encontrado';
   }
 
   // Função para obter nome do responsável (funcionário ou fornecedor)
-  obterNomeResponsavel(movimentacao: Movimentacao): string {
+  obterNomeResponsavel(movimentacao: Movimentacao){
     if (movimentacao.fornecedorId) {
-      const fornecedor = this.fornecedores.find((f) => f.id === movimentacao.fornecedorId);
+      const fornecedor = this.fornecedores.find((f) => f.id == movimentacao.fornecedorId);
       return fornecedor ? fornecedor.nome : 'Fornecedor não encontrado';
     }
 
     if (movimentacao.funcionarioId) {
-      const funcionario = this.funcionarios.find((f) => f.id === movimentacao.funcionarioId);
+      const funcionario = this.funcionarios.find((f) => f.id == movimentacao.funcionarioId);
       return funcionario ? funcionario.nome : 'Funcionário não encontrado';
     }
 

@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError} from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { User } from '../models/user.model';
 import { map, catchError } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'; // URL da API para autenticação
+  private apiUrl = 'http://localhost:3000';  // URL da API
   private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {}
 
-  // Função para login
   login(user: User): Observable<any> {
-    // Faz uma requisição para buscar o usuário correspondente
-    return this.http.get<any[]>(`${this.apiUrl}/users`).pipe(
-      map(users => {
-        const matchedUser = users.find(
+    return this.http.get<any[]>(`${this.apiUrl}/funcionarios`).pipe(
+      map(funcionarios => {
+        const matchedFuncionario = funcionarios.find(
           u => u.username === user.username && u.password === user.password
         );
 
-        if (matchedUser) {
-          // Retorna um token fictício
-          return { token: 'fake-jwt-token' };
+        if (matchedFuncionario) {
+          // Gera um token fictício
+          const fakeToken = `${matchedFuncionario.username}-fake-jwt-token`;
+          return { token: fakeToken };
         } else {
           throw new Error('Credenciais inválidas');
         }
@@ -33,7 +31,7 @@ export class AuthService {
       catchError(err => throwError(() => 'Erro ao autenticar'))
     );
   }
-  // Recuperar o token do LocalStorage
+
   storeToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
@@ -41,10 +39,11 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
-  
+
   isAuthenticated(): boolean {
-    return !!this.getToken(); // Retorna true se o token existir
+    return !!this.getToken();
   }
+
   logout(): void {
     localStorage.removeItem(this.tokenKey);
   }
